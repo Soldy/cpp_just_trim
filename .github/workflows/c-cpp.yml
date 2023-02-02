@@ -1,0 +1,25 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: configure
+      run: sudo apt install -y gcc-10 curl
+    - name: get doctest.h
+      run: curl https://raw.githubusercontent.com/onqtam/doctest/v2.4.9/doctest/doctest.h > doctest.h
+    - name: get version
+      run: g++ -v
+    - name: compile
+      run: g++ -o test test.cpp -std=c++17
+    - name: test
+      run: ./test

@@ -17,7 +17,7 @@ void leftTrim(std::string &input_) {
       input_.begin(),
       std::find_if(
         input_.begin(),
-        input_.end(), 
+        input_.end(),
         just_trim::spaceCheck
       )
     );
@@ -26,10 +26,10 @@ void leftTrim(std::string &input_) {
 void rightTrim(std::string &input_) {
     input_.erase(
       std::find_if(
-        input_.rbegin(), 
+        input_.rbegin(),
         input_.rend(),
         just_trim::spaceCheck
-      ).base(), 
+      ).base(),
       input_.end()
     );
 };
